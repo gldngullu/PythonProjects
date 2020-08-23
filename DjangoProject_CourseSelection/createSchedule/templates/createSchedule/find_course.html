@@ -1,0 +1,14 @@
+{% extends 'createSchedule/base.html' %}
+{% block content %}
+    <div>
+        {% for question in questions %}
+            <div>
+                <p>{{ question.question }}</p>
+                {% for question in questions %}
+                    <p>{{ question.answers }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

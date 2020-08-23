@@ -1,0 +1,9 @@
+{% extends 'createSchedule/base.html' %}
+{% block content %}
+            <div class="center containerCustom">
+                <a href="{% url 'schedule' %}"><button class="fancyButton schedule"> Create a New Schedule For Me</button></a>
+            </div>
+            <div class="center containerCustom">
+                <a href="{% url 'courses' %}"><button class="fancyButton course"> Show Available Courses For Me</button></a>
+            </div>
+{%  endblock %}

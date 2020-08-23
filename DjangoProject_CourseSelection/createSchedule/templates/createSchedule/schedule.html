@@ -1,0 +1,227 @@
+{% extends 'createSchedule/base.html' %}
+{% block content %}
+    <div>
+        <h1 class="heading"> Schedule </h1>
+    </div>
+    <div style=font-family:'Cambria';>
+        {% for course in courses %}
+            <div>
+                <h4 style="color:#3e395b;font-style:italic;">{{ course.courseCode }} - {{ course.courseName }}</h4>
+                <p><strong style="color:#5E5694;">Instructor:</strong> {{ course.instructor }} <br>
+                    <strong style="color:#5E5694;"> Course Description:</strong>{{ course.courseDescription }}</p>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+
+
+        {% for course in courses %}
+
+
+            <span id="kkk"> Course Name </span>
+            <script>
+                var aa = {{ course.courseName }}.innerText;
+                document.getElementById("kkk").innerText = aa;
+            </script>
+
+            <div style="color:#3e395b;">
+                <span id="courseName">{{ course.courseCode }}</span>
+                Course Day: <span id="dayOfCourse">{{ course.courseDay }}</span>
+                First Hour: <span id="startHourOfCourse">{{ course.courseHourStart }}</span>
+                Last Hour: <span id="endHourOfCourse">{{ course.courseHourEnd }}</span></div>
+            <br>
+        {% endfor %}
+    </div>
+
+    <script>
+        function createArray(length) {
+            var arr = new Array(length || 0),
+                i = length;
+            if (arguments.length > 1) {
+                var args = Array.prototype.slice.call(arguments, 1);
+                while (i--) arr[length - 1 - i] = createArray.apply(this, args);
+            }
+            return arr;
+        }
+
+
+
+
+        function getSchedule() {
+            var schedule = createArray(5, 8);
+            var courseName = document.getElementById("courseName");
+            var day = document.getElementById("dayOfCourse");
+            var startHour = document.getElementById("startHourOfCourse");
+            var endHour = document.getElementById("endHourOfCourse");
+            for (var i = startHour; i < endHour; i++) {
+                schedule[day][i] = courseName;
+            }
+            return schedule;
+        }
+
+
+        window.onload = function () {
+            var schedule2 = getSchedule();
+            document.getElementById("M0").innerText = schedule2[1][1];
+            document.getElementById("M1").innerText = schedule2[1][2];
+            document.getElementById("M2").innerText = schedule2[1][3];
+            document.getElementById("M3").innerText = schedule2[1][4];
+            document.getElementById("M4").innerText = schedule2[1][5];
+            document.getElementById("M5").innerText = schedule2[1][6];
+            document.getElementById("M6").innerText = schedule2[1][7];
+            document.getElementById("M7").innerText = schedule2[1][8];
+        }
+    </script>
+    <div>
+
+        <div class="tg-wrap">
+            <table class="tg">
+                <tr>
+                    <th class="tg-j50o"></th>
+                    <th class="tg-u3is">9.00</th>
+                    <th class="tg-u3is">10.00</th>
+                    <th class="tg-u3is">11.00</th>
+                    <th class="tg-u3is">12.00</th>
+                    <th class="tg-u3is">13.00</th>
+                    <th class="tg-u3is">14.00</th>
+                    <th class="tg-u3is">15.00</th>
+                    <th class="tg-u3is">16.00</th>
+                </tr>
+                <tr>
+                    <td class="tg-1tvm">Monday</td>
+                    <td class="tg-dv0x" id="M0"></td>
+                    <td class="tg-dv0x" id="M1"></td>
+                    <td class="tg-dv0x" id="M2"></td>
+                    <td class="tg-dv0x" id="M3"></td>
+                    <td class="tg-dv0x" id="M4"></td>
+                    <td class="tg-dv0x" id="M5"></td>
+                    <td class="tg-dv0x" id="M6"></td>
+                    <td class="tg-dv0x" id="M7"></td>
+                </tr>
+                <tr>
+                    <td class="tg-1tvm">Tuesday</td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x" id="lala"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                </tr>
+                <tr>
+                    <td class="tg-1tvm">Wednesday</td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                </tr>
+                <tr>
+                    <td class="tg-1tvm">Thursday</td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                </tr>
+                <tr>
+                    <td class="tg-1tvm">Friday</td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                    <td class="tg-dv0x"></td>
+                </tr>
+            </table>
+        </div>
+        <style type="text/css">
+            .tg {
+                border-collapse: collapse;
+                border-spacing: 0;
+                margin: 0px auto;
+            }
+
+            .tg td {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                padding: 8px 20px;
+                border-style: solid;
+                border-width: 1px;
+                overflow: hidden;
+                word-break: normal;
+                border-color: black;
+            }
+
+            .tg th {
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                padding: 8px 20px;
+                border-style: solid;
+                border-width: 1px;
+                overflow: hidden;
+                word-break: normal;
+                border-color: black;
+            }
+
+            .tg .tg-dv0x {
+                font-size: 12px;
+                background-color: #ffffff;
+                border-color: #000000;
+                text-align: center;
+                vertical-align: top
+            }
+
+            .tg .tg-j50o {
+                font-size: 12px;
+                background-color: #c0c0c0;
+                border-color: #000000;
+                text-align: center;
+                vertical-align: top
+            }
+
+            .tg .tg-u3is {
+                font-size: 12px;
+                background-color: #9698ed;
+                border-color: #000000;
+                text-align: center;
+                vertical-align: top
+            }
+
+            .tg .tg-1tvm {
+                font-size: 12px;
+                background-color: #dae8fc;
+                border-color: #000000;
+                text-align: center;
+                vertical-align: top
+            }
+
+            @media screen and (max-width: 767px) {
+                .tg {
+                    width: auto !important;
+                }
+
+                .tg col {
+                    width: auto !important;
+                }
+
+                .tg-wrap {
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    margin: auto 0px;
+                }
+            }</style>
+    </div>
+    </div>
+{% endblock %}

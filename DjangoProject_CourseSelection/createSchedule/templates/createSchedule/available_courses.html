@@ -1,0 +1,48 @@
+{% extends 'createSchedule/base.html' %}
+{% block content %}
+    <div>
+        <h1 class="heading"> Available Courses </h1>
+    </div>
+    <div style=font-family:'Cambria';>
+        {% for course in courses %}
+
+            <div>
+                <h4 style="color:#3e395b;font-style:italic;">{{ course.courseCode }} - {{ course.courseName }}</h4>
+                <p><strong style="color:#5E5694;">Instructor:</strong> {{ course.instructor }} <br>
+                    <strong style="color:#5E5694;"> Course Description:</strong>{{ course.courseDescription }}</p>
+                <hr>
+            </div>
+
+            <script>
+                var courseDay2 = {{ course.courseDay }};
+                if (courseDay2 == 0)
+                    document.getElementById("courseDay").innerText = "Monday";
+                else if (courseDay2 == 1)
+                    document.getElementById("courseDay").innerText = "Tuesday";
+                else if (courseDay2 == 2)
+                    document.getElementById("courseDay").innerText = "Wednesday";
+                else if (courseDay2 == 3)
+                    document.getElementById("courseDay").innerText = "Thursday";
+                else if (courseDay2 == 4)
+                    document.getElementById("courseDay").innerText = "Friday";
+            </script>
+
+        {% endfor %}
+        <div>
+            <select class="form-control" id="selectCourse" name="selectCourse">
+                {% for course in courses %}
+                    <option> {{ course.courseCode }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        <button class="simpleButton" href=""> Add Course</button>
+        <br>
+
+        <script>
+            var e = document.getElementById("selectCourse");
+            var selectedCourse = e.options[e.selectedIndex].value;
+        </script>
+
+    </div>
+{% endblock %}

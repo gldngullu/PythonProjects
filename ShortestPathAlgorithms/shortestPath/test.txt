@@ -1,0 +1,16 @@
+A B Distance
+
+A C 4
+A B 1
+B C 3
+A E 10
+E D 2
+
+Straight line Distances (to valladolid)
+
+A 10
+B 5
+C 6
+D 0
+E 12
+EOF
